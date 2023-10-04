@@ -82,14 +82,10 @@ Where $A$ is the amplitude and $f$ is the frequency of the signal.
 The Bode plot analyzes the system's response to sinusoidal inputs at varying frequencies. The gain (in dB) and phase (in degrees) are calculated as follows:
 
 **Gain (in dB)**
-$$
-\text{Gain (dB)} = 20 \log_{10} \left( \frac{\left| \text{Output Peak} \right|}{\left| \text{Input Peak} \right|} \right)
-$$
+$$\text{Gain (dB)} = 20 \log_{10} \left( \frac{\left| \text{Output Peak} \right|}{\left| \text{Input Peak} \right|} \right)$$
   
 **Phase (in degrees)**
-$$
-\text{Phase (degrees)} = \frac{\text{Output Peak Position} - \text{Input Peak Position}}{\text{Total Samples}} \times 360
-$$
+$$\text{Phase (degrees)} = \frac{\text{Output Peak Position} - \text{Input Peak Position}}{\text{Total Samples}} \times 360$$
 
 These equations are also solved numerically in the code to analyze the system's frequency response for different PID parameters.
 
