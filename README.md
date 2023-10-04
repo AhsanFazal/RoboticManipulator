@@ -95,8 +95,6 @@ This script focuses on a 2-DoF position-controlled robotic arm. It requires the 
 This is done using the kinematics to get endpoint position, comparing it to the desired position, and then computing the joint velocities $dq$ to minimize this error.
 
 #### Governing Equations
-
-##### Forward Kinematics
 The forward kinematics equations for a 2-DOF planar robot are:
 
 $$
@@ -106,7 +104,7 @@ p_y &= l_1 \sin(q_1) + l_2 \sin(q_1 + q_2)
 \end{aligned}
 $$
 
-### Jacobian Matrix
+##### Jacobian Matrix
 The Jacobian matrix $J$ for this robot would be:
 
 $$
@@ -116,7 +114,7 @@ J = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-### Kinematic Control
+##### Kinematic Control
 A simple PID controller can be used to compute $dq$ based on the error between the desired and current endpoint positions $e = p_{\text{ref}} - p$.
 
 $$
