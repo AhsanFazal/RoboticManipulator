@@ -43,17 +43,13 @@ This Python script simulates a 1-Degree-of-Freedom (1-DoF) mass-damper system. I
 
 The system's dynamic equation for a 1-DoF mass-damper can be represented as:
 
-$$
-m \ddot{x} + b \dot{x} = F
-$$
+$$m \ddot{x} + b \dot{x} = F$$
 
 Where $m$ is the mass, $\ddot{x}$ is the acceleration, $b$ is the damping coefficient, $\dot{x}$ is the velocity, and $F$ is the actuator force.
 
 The PID controller is given by:
 
-$$
-F = K_p e + K_i \int e \, dt + K_d \frac{d}{dt}e
-$$
+$$F = K_p e + K_i \int e \, dt + K_d \frac{d}{dt}e$$
 
 Where $K_p$, $K_i$, and $K_d$ are the proportional, integral, and derivative gains, respectively, and $e = x_r - x$ is the error between the reference position $x_r$ and the actual position $x$.
 
@@ -88,6 +84,10 @@ $$\text{Gain (dB)} = 20 \log_{10} \left( \frac{\left| \text{Output Peak} \right|
 $$\text{Phase (degrees)} = \frac{\text{Output Peak Position} - \text{Input Peak Position}}{\text{Total Samples}} \times 360$$
 
 These equations are also solved numerically in the code to analyze the system's frequency response for different PID parameters.
+
+#### Results
+
+![Bode Plot](images/PA1b.png)
 
 ### `PA1c.py`
 This script focuses on a 2-DoF position-controlled robotic arm. It requires the derivation and implementation of forward kinematics and the Jacobian matrix to create a singularity-robust endpoint position controller.
