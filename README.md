@@ -96,7 +96,7 @@ This is done using the kinematics to get endpoint position, comparing it to the 
 
 #### Governing Equations
 
-#### Forward Kinematics
+##### Forward Kinematics
 The forward kinematics equations for a 2-DOF planar robot are:
 
 $$
