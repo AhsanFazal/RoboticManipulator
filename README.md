@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains code and resources for building and controlling a planar robotic manipulator. The objectives of this assignment are as follows:
+This repository contains code for building and controlling a planar robotic manipulator. The objectives of this assignment are as follows:
 
 1. Create and tune PID controllers.
 2. Analyze PID-controlled plants using control theory, focusing on frequency response with empirical Bode plots.
@@ -35,22 +35,72 @@ The repository is structured around several Python templates, each corresponding
 - `PA1d.py`: Task-priority control of a 4-DoF robotic arm.
 - `PA1e.py`: Dynamic control of a 2-DoF torque-controlled robotic arm.
 
-### `PA1a.py`
+### 1-Degree-of-Freedom (1-DoF) mass-damper system - `PA1a.py`
 This Python script simulates a 1-Degree-of-Freedom (1-DoF) mass-damper system. It provides a framework for implementing PID controllers to actuate the system. The PID controllers are tuned to achieve specific step responses, including overshoot, no overshoot, and instability.
+
+
+#### Governing Equations
+
+The system's dynamic equation for a 1-DoF mass-damper can be represented as:
+
+$$
+m \ddot{x} + b \dot{x} = F
+$$
+
+Where $m$ is the mass, $\ddot{x}$ is the acceleration, $b$ is the damping coefficient, $\dot{x}$ is the velocity, and $F$ is the actuator force.
+
+The PID controller is given by:
+
+$$
+F = K_p e + K_i \int e \, dt + K_d \frac{d}{dt}e
+$$
+
+Where $K_p$, $K_i$, and $K_d$ are the proportional, integral, and derivative gains, respectively, and $e = x_r - x$ is the error between the reference position $x_r$ and the actual position $x$.
+
+These equations are solved numerically in the code to simulate the system's behavior for different PID parameters.
+
+#### Results
+
+The following plot shows the system's response to a step input for different PID parameters.
 
 ![1-DoF Mass-Damper System](images/PA1a.png)
 
-### `PA1b.py`
+
+### Bode Plots - `PA1b.py`
 Expanding upon `PA1a.py`, this file aims to analyze the frequency response of the 1-DoF mass-damper system. It allows to empirically sample gains and phase shifts of the system and plot Bode plots.
 
-![Bode Plot](images/PA1b.png)
+#### Governing Equations
+
+In this particular scenario, the input signal $x_r$ is a sine wave, which allows to perform frequency response analysis:
+
+$$
+x_r(t) = A \sin(2 \pi f t)
+$$
+
+Where $A$ is the amplitude and $f$ is the frequency of the signal.
+
+The Bode plot analyzes the system's response to sinusoidal inputs at varying frequencies. The gain (in dB) and phase (in degrees) are calculated as follows:
+
+- Gain (in dB):
+$$
+\text{Gain (dB)} = 20 \log_{10} \left( \frac{\left| \text{Output Peak} \right|}{\left| \text{Input Peak} \right|} \right)
+$$
+  
+- Phase (in degrees): 
+$$
+\text{Phase (degrees)} = \frac{\text{Output Peak Position} - \text{Input Peak Position}}{\text{Total Samples}} \times 360
+$$
+
+These equations are also solved numerically in the code to analyze the system's frequency response for different PID parameters.
 
 ### `PA1c.py`
 This script focuses on a 2-DoF position-controlled robotic arm. It requires the derivation and implementation of forward kinematics and the Jacobian matrix to create a singularity-robust endpoint position controller.
 
 This is done using the kinematics to get endpoint position, comparing it to the desired position, and then computing the joint velocities $dq$ to minimize this error.
 
-### Forward Kinematics
+#### Governing Equations
+
+#### Forward Kinematics
 The forward kinematics equations for a 2-DOF planar robot are:
 
 $$
